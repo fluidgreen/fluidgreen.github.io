@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Translation Game</title>
+<style>
+body {
+background-color:lavender;
+text-align: center;
+margin:auto;
+font-family:Verdana;
+}
+
+h1 {
+font-family: Copperplate;
+border: 1px solid;
+background-color:pink;
+padding-top:20px;
+padding-bottom:20px;
+padding-left: 20px;
+padding-right:25px;
+margin-top: 50px;
+margin-bottom: 50px;
+margin-right: 300px;
+margin-left: 300px;
+}
+p {
+display:none;
+background-color:pink;
+padding:25px;
+}
+div:hover p {
+display: block;
+}
+#grad {
+height:24px;
+background-image:linear-gradient(PeachPuff,Plum);
+}
+</style>
+<script>
+
+var engNum =["ask","chalk", "bamboo", "desire", "adjust", "agriculture","abrupt", "daffodil", "fuse","intimacy"];
+var chiNum= ["問", "粉筆","竹子","慾望","調整","農業","成熟","突兀","喇叭水仙","保險絲","親密"];
+
+var wordIndex = 0;
+
+function start()
+{
+	wordIndex = 0;
+	document.getElementById("display").innerHTML = chiNum[wordIndex];
+}
+
+function play()
+{
+
+	var answer = document.getElementById("input_answer").value;
+	var correct_answer = engNum[wordIndex];
+	
+	
+	var myFeedback = "You're right!";
+	if (answer != correct_answer)
+	{
+ 		myFeedback = "The correct answer was " + correct_answer + ".";
+	}
+	document.getElementById("feedback").innerHTML = myFeedback;
+
+	
+	wordIndex++;
+	if (wordIndex == engNum.length)
+	{
+		wordIndex = 0;
+	}
+	document.getElementById("display").innerHTML = chiNum[wordIndex];
+}
+
+</script>
+
+</head>
+<body>
+
+<button onclick="start()">Start</button>
+<br />
+
+<p id="display"></p>
+<br />
+
+<form>
+Translate into English: <input type="text" id="input_answer">
+</form>
+
+<p id="feedback">Click on "Start" to start the game.</p>
+
+<button onclick="play()">Next Word</button>
+
+</body>
+</html>
